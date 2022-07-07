@@ -1,0 +1,19 @@
+<!-- EXERCISE CODE -->
+<mat-toolbar color="primary">
+    <h1>[ Tienda ]</h1>
+    <ng-container *ngFor="let item of menuItems">
+        <button mat-button *ngIf="item.submenu.length" [matMenuTriggerFor]="menu"> {{ item.name }} </button>
+        <button mat-button *ngIf="!item.submenu.length"> {{ item.name }} </button>
+        <mat-menu #menu="matMenu">
+            <ng-container *ngFor="let subItem of item.submenu">
+                <app-submenu [item]="subItem"></app-submenu>
+            </ng-container>
+        </mat-menu>
+    </ng-container>
+    <button mat-button (click)="about = !about" class="about-me-button">
+        <mat-icon aria-label="About me">help</mat-icon>
+    </button>
+</mat-toolbar>
+<!-- END OF EXERCISE CODE -->
+
+<app-about-me [about]="about"></app-about-me>

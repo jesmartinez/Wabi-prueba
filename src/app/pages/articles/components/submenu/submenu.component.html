@@ -1,0 +1,7 @@
+<button mat-menu-item *ngIf="item.submenu.length" [matMenuTriggerFor]="menu"> {{ item.name }} </button>
+<button mat-menu-item *ngIf="!item.submenu.length"> {{ item.name }} </button>
+<mat-menu #menu="matMenu">
+    <ng-container *ngFor="let subItem of item.submenu">
+        <app-submenu [item]="subItem"></app-submenu>
+    </ng-container>
+</mat-menu>
